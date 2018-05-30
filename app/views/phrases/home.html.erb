@@ -1,0 +1,10 @@
+<%= link_to "Generate Phrase", "get_random_phrase", remote: true, id: "gen_link" %>
+<%= link_to "Clear Phrases", "reset_phrases", remote: true, id: "clear_link" %>
+<ul id="phrase-list">
+	<% @phrases.each do |p| %>
+	<li class="phrase"><%= p.body %></li>
+	<% end %>
+</ul>
+<h1 id="phrase-test"></h1>
+
+
