@@ -1,3 +1,19 @@
-// Place all the styles related to the Phrases controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.home-container{
+	text-align: center;
+	padding: 4rem;
+}
+
+.link_to{
+	display: inline-block;
+	margin: 1rem 1rem 2rem 1rem;
+}
+
+#phrase-list{
+	list-style-type: none;
+}
+
+.phrase{
+	margin: 0.5rem;
+	border: solid 1px #777777;
+	border-radius: 5px;
+}
