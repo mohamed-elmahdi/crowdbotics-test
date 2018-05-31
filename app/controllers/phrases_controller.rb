@@ -1,6 +1,6 @@
 class PhrasesController < ApplicationController
 
-	@@remaining_array = *(1..Phrase.count)
+	@@remaining_array = Phrase.ids
 	@@taken_array = []
 
 	def home
