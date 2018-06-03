@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_28_005745) do
+ActiveRecord::Schema.define(version: 2018_06_02_063056) do
 
   create_table "phrases", force: :cascade do |t|
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "displayed", default: false
   end
 
 end

@@ -3,7 +3,7 @@
 	<%= link_to "Clear Phrases", "reset_phrases", method: "get", remote: true, id: "clear_link", class: "btn btn-danger" %>
 	<ul id="phrase-list">
 		<% @phrases.each do |p| %>
-		<li class="phrase"><%= p.body %></li>
+		<li class="phrase"><%= p["body"] %></li>
 		<% end %>
 	</ul>
 	<h1 id="phrase-test"></h1>

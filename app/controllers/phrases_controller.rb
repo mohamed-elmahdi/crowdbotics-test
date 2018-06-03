@@ -1,26 +1,29 @@
 class PhrasesController < ApplicationController
 
-	@@remaining_array = Phrase.ids
-	@@taken_array = []
-
 	def home
-		@phrases = []
-		@@taken_array.each do |p_id|
-			@phrases.append(Phrase.find(p_id))
+		if session[:phrases]
+			@phrases = session[:phrases]
+		else
+			@phrases = []
 		end
 	end
 
 	def get_random_phrase
-		phrase_id = @@remaining_array.sample
-		@phrase = Phrase.find(phrase_id)
-		@@remaining_array.delete(phrase_id)
-		@@taken_array.append(phrase_id)
+		taken = []
+		session[:phrases].each do |p|
+			taken.append(p["id"])
+		end
+		@phrase = Phrase.order("RANDOM()").where.not(id: taken).limit(1).first
+		if session[:phrases]
+			session[:phrases].append(@phrase)
+		else
+			session[:phrases] = [@phrase]
+		end
 		render layout: false
 	end
 
 	def clear_phrases
-		@@remaining_array = *(1..Phrase.count)
-		@@taken_array = []
+		session[:phrases] = []
 	end
 
 end
