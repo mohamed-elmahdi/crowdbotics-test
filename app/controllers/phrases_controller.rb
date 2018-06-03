@@ -9,6 +9,7 @@ class PhrasesController < ApplicationController
 	end
 
 	def get_random_phrase
+		session[:phrases] ||= []
 		taken = []
 		session[:phrases].each do |p|
 			taken.append(p["id"])
@@ -16,8 +17,6 @@ class PhrasesController < ApplicationController
 		@phrase = Phrase.order("RANDOM()").where.not(id: taken).limit(1).first
 		if session[:phrases]
 			session[:phrases].append(@phrase)
-		else
-			session[:phrases] = [@phrase]
 		end
 		render layout: false
 	end
