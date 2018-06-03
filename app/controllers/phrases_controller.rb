@@ -15,9 +15,7 @@ class PhrasesController < ApplicationController
 			taken.append(p["id"])
 		end
 		@phrase = Phrase.order("RANDOM()").where.not(id: taken).limit(1).first
-		if session[:phrases]
-			session[:phrases].append(@phrase)
-		end
+		session[:phrases].append(@phrase)
 		render layout: false
 	end
 
